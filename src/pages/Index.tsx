@@ -38,7 +38,12 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center px-4 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/90" />
+          <img 
+            src="/lovable-uploads/b779403a-76f1-47cb-a6b2-4cf98eb0e623.png"
+            alt="Abstract technology background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80" />
         </div>
         
         <div className="container mx-auto text-center z-10">
@@ -47,10 +52,10 @@ const Index = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-fox-dark mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Fox 2 IT Solutions
             </h1>
-            <p className="text-xl md:text-2xl text-fox-gray max-w-2xl mx-auto mb-8">
+            <p className="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto mb-8">
               Global Enterprise IT Services Provider
             </p>
             <div className="flex justify-center space-x-4">
@@ -62,7 +67,7 @@ const Index = () => {
         </div>
         
         <div className="absolute bottom-10 w-full flex justify-center animate-bounce">
-          <ChevronDown className="w-6 h-6 text-fox-dark" />
+          <ChevronDown className="w-6 h-6 text-white" />
         </div>
       </section>
 
@@ -104,15 +109,24 @@ const Index = () => {
       </section>
 
       {/* Global Reach Section */}
-      <section className="py-20 bg-fox-dark text-white px-4">
-        <div className="container mx-auto">
+      <section className="relative py-20 px-4 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/lovable-uploads/d14d2d77-7ce3-421b-b480-343a9fa50cc6.png"
+            alt="Server room"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/90" />
+        </div>
+        
+        <div className="container mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: isVisible ? 1 : 0 }}
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white">
               Global Reach, Local Expertise
             </h2>
             <div className="flex items-center justify-center mb-8">
