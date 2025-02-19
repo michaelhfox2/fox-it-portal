@@ -10,6 +10,11 @@ const Index = () => {
     setIsVisible(true);
   }, []);
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    contactSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const services = [
     {
       icon: <Globe2 className="h-8 w-8" />,
@@ -59,7 +64,10 @@ const Index = () => {
               Global Enterprise IT Services Provider
             </p>
             <div className="flex justify-center space-x-4">
-              <button className="bg-fox-purple text-white px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <button 
+                onClick={scrollToContact}
+                className="bg-fox-purple text-white px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              >
                 Get Started
               </button>
             </div>
@@ -140,7 +148,7 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 px-4 bg-[#222222]">
+      <section id="contact" className="py-20 px-4 bg-[#222222]">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto bg-[#1A1F2C] rounded-xl shadow-xl p-8 border border-gray-800">
             <h2 className="text-3xl font-bold text-white text-center mb-8">
