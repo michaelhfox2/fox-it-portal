@@ -50,10 +50,16 @@ const Index = () => {
     }
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Prepare email content
+      const subject = encodeURIComponent(`Website Inquiry from ${formData.name}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      );
       
-      toast.success("Message sent successfully!");
+      // Open mailto link
+      window.location.href = `mailto:webleads@fox2it.com?subject=${subject}&body=${body}`;
+      
+      toast.success("Opening email client...");
       // Reset form
       setFormData({
         name: "",
@@ -61,7 +67,7 @@ const Index = () => {
         message: ""
       });
     } catch (error) {
-      toast.error("Failed to send message. Please try again.");
+      toast.error("Failed to open email client. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
