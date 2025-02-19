@@ -133,7 +133,7 @@ const Index = () => {
               <Users className="h-16 w-16 text-fox-purple" />
             </div>
             <p className="text-lg text-gray-300 mb-8">
-              Based in South Africa, serving enterprises worldwide with comprehensive IT solutions and support
+              Serving enterprises worldwide with comprehensive IT solutions and support
             </p>
           </motion.div>
         </div>
