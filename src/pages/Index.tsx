@@ -2,9 +2,16 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Globe2, Shield, Briefcase, Server, Users, ChevronDown } from "lucide-react";
+import { toast } from "sonner";
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -13,6 +20,51 @@ const Index = () => {
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     contactSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Validate form
+    if (!formData.name || !formData.email || !formData.message) {
+      toast.error("Please fill in all fields");
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error("Please enter a valid email address");
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      toast.success("Message sent successfully!");
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        message: ""
+      });
+    } catch (error) {
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const services = [
@@ -154,26 +206,39 @@ const Index = () => {
             <h2 className="text-3xl font-bold text-white text-center mb-8">
               Get in Touch
             </h2>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
                   placeholder="Name"
                   className="w-full px-4 py-3 rounded-lg bg-[#222222] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-fox-purple"
                 />
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   placeholder="Email"
                   className="w-full px-4 py-3 rounded-lg bg-[#222222] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-fox-purple"
                 />
               </div>
               <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
                 placeholder="Message"
                 rows={4}
                 className="w-full px-4 py-3 rounded-lg bg-[#222222] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-fox-purple"
               />
-              <button className="w-full bg-fox-purple text-white py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                Send Message
+              <button 
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-fox-purple text-white py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>
