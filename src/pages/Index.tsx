@@ -34,7 +34,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-fox-dark">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center px-4 overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -72,18 +72,18 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 px-4" id="services">
+      <section className="py-20 px-4 bg-[#1A1F2C]" id="services">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <motion.h2
               initial={{ opacity: 0 }}
               animate={{ opacity: isVisible ? 1 : 0 }}
               transition={{ duration: 0.5 }}
-              className="text-3xl md:text-4xl font-bold text-fox-dark mb-4"
+              className="text-3xl md:text-4xl font-bold text-white mb-4"
             >
               Our Services
             </motion.h2>
-            <p className="text-fox-gray text-lg max-w-2xl mx-auto">
+            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
               Comprehensive enterprise IT solutions tailored to your needs
             </p>
           </div>
@@ -95,13 +95,13 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-[#222222] p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-800"
               >
                 <div className="text-fox-purple mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold text-fox-dark mb-2">
+                <h3 className="text-xl font-semibold text-white mb-2">
                   {service.title}
                 </h3>
-                <p className="text-fox-gray">{service.description}</p>
+                <p className="text-gray-300">{service.description}</p>
               </motion.div>
             ))}
           </div>
@@ -140,10 +140,10 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-[#222222]">
         <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-xl p-8">
-            <h2 className="text-3xl font-bold text-fox-dark text-center mb-8">
+          <div className="max-w-4xl mx-auto bg-[#1A1F2C] rounded-xl shadow-xl p-8 border border-gray-800">
+            <h2 className="text-3xl font-bold text-white text-center mb-8">
               Get in Touch
             </h2>
             <form className="space-y-6">
@@ -151,18 +151,18 @@ const Index = () => {
                 <input
                   type="text"
                   placeholder="Name"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-fox-purple"
+                  className="w-full px-4 py-3 rounded-lg bg-[#222222] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-fox-purple"
                 />
                 <input
                   type="email"
                   placeholder="Email"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-fox-purple"
+                  className="w-full px-4 py-3 rounded-lg bg-[#222222] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-fox-purple"
                 />
               </div>
               <textarea
                 placeholder="Message"
                 rows={4}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-fox-purple"
+                className="w-full px-4 py-3 rounded-lg bg-[#222222] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-fox-purple"
               />
               <button className="w-full bg-fox-purple text-white py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 Send Message
