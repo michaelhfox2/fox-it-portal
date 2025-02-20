@@ -1,8 +1,8 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Globe2, Shield, Briefcase, Server, Users, ChevronDown } from "lucide-react";
 import { toast } from "sonner";
-import { sendEmail } from "../utils/emailService";
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -50,21 +50,24 @@ const Index = () => {
     }
 
     try {
-      const success = await sendEmail(formData);
+      // Prepare email content
+      const subject = encodeURIComponent(`Website Inquiry from ${formData.name}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      );
       
-      if (success) {
-        toast.success("Message sent successfully!");
-        // Reset form
-        setFormData({
-          name: "",
-          email: "",
-          message: ""
-        });
-      } else {
-        toast.error("Failed to send message. Please try again.");
-      }
+      // Open mailto link
+      window.location.href = `mailto:webleads@fox2it.com?subject=${subject}&body=${body}`;
+      
+      toast.success("Opening email client...");
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        message: ""
+      });
     } catch (error) {
-      toast.error("An error occurred. Please try again later.");
+      toast.error("Failed to open email client. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
